@@ -1,11 +1,19 @@
 <?php
-include "db_connection.php"; // Include your DB connection
+session_start(); 
+include "db_connection.php"; 
+
+$user_id = $_SESSION['user_id'];
 
 $sql = "SELECT schedules.schedule_id, schedules.subject, schedules.start_time, schedules.end_time, rooms.room_code
         FROM schedules
-        JOIN rooms ON schedules.room_id = rooms.room_id";
+        JOIN rooms ON schedules.room_id = rooms.room_id
+        WHERE schedules.user_id = ?";
 
-$result = $conn->query($sql);
+$stmt = $conn->prepare($sql);
+$stmt->bind_param('i', $user_id); 
+$stmt->execute();
+$result = $stmt->get_result();
+
 $events = [];
 
 while ($row = $result->fetch_assoc()) {
@@ -14,8 +22,11 @@ while ($row = $result->fetch_assoc()) {
         'title' => $row['subject'],
         'start' => $row['start_time'],
         'end' => $row['end_time'],
-        'room_code' => $row['room_code']  // Include room_code in the event data
+        'extendedProps' => [
+            'room_code' => $row['room_code'] 
+        ]
     ];
 }
 
 echo json_encode($events);
+?>

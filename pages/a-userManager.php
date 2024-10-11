@@ -233,7 +233,7 @@ $logs = getUserActivityLogs();
             <div class="separator">
                 <!-- User Form -->
                 <div class="form">
-                    <h3>User Information</h3>
+                    <h6>User Information</h6>
                     <form id="userForm" method="POST" action="">
                         <input type="hidden" id="user_id" name="user_id" value="<?php echo isset($user_details['user_id']) ? $user_details['user_id'] : ''; ?>">
                         <span>
@@ -304,7 +304,7 @@ $logs = getUserActivityLogs();
                     </form>
                 </div>
                 <div class="logs">
-                    <h2>User Activity Logs</h2>
+                    <h5>User Activity Logs</h5>
                     <div>
                         <table border="1">
                             <thead>

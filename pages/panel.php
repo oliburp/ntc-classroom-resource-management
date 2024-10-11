@@ -6,6 +6,7 @@ if (!isset($_SESSION['role'])) {
     header("Location: login.php");
     exit();
 }
+$userId = $_SESSION['user_id'];
 $userRole = $_SESSION['role'];
 switch ($userRole) {
     case "student":

@@ -195,7 +195,7 @@ main {
   flex-direction: column;
   flex: 1;
   padding: 30px;
-  height: 83vh;
+  height: 89.5vh;
   justify-content: center;
 }
 
@@ -250,11 +250,19 @@ main {
   background-color: #f0f0f0;
 }
 
+.separator {
+  padding-top: 5px;
+}
+
 .separator .form {
   width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.separator .form #userForm {
+  font-size: small !important;
 }
 
 .separator .logs > div {
@@ -363,7 +371,7 @@ main {
   background-color: #f8e00d;
 }
 
-.form h3 {
+.form h6 {
   text-align: center;
   border: 3px solid #000;
   background-color: #fff;
